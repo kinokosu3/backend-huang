@@ -1,0 +1,21 @@
+{
+  "properties": [
+    {
+      "name": "status_code.invalid",
+      "type": "java.lang.Integer",
+      "description": "Description for status_code.invalid.",
+      "defaultValue": 104
+    },
+    {
+      "name": "status_code.success",
+      "type": "java.lang.Integer",
+      "description": "Description for status_code.success.",
+      "defaultValue": 101
+    },
+    {
+      "name": "encrypt.key",
+      "type": "java.lang.String",
+      "description": "Description for encrypt.key.",
+      "defaultValue": "motherfucker"
+    }
+  ] }
