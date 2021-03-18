@@ -13,7 +13,8 @@ import lombok.ToString;
 public class Drug {
     private String id;
     private String name;
-    private String drugCode;
+    private String drug_code;
     private String measure;
     private String company;
+    private float price;
 }

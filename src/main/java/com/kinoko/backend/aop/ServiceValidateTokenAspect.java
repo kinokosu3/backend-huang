@@ -48,7 +48,10 @@ public class ServiceValidateTokenAspect{
         assert requestAttributes != null;
         HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
         String token = request.getHeader("token");
+//        System.out.println(token);
+
         String decrypt = decrypt(token, key);
+//        System.out.println(decrypt);
         Map<String, Object> user  = JSONObject.parseObject(decrypt);
         Map<String, Object> res = new HashMap<String, Object>();
 

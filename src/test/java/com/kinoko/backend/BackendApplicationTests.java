@@ -4,6 +4,9 @@ import com.kinoko.backend.Service.DataService;
 import com.kinoko.backend.Service.UserService;
 import com.kinoko.backend.mapper.SqlProvider;
 import com.kinoko.backend.pojo.Patient;
+import com.kinoko.backend.pojo.Staff;
+import com.kinoko.backend.pojo.User;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,9 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @SpringBootTest
 
@@ -23,6 +24,8 @@ class BackendApplicationTests {
 
     @Autowired
     DataService dataService;
+    @Autowired
+    UserService userService;
 
     public void testReflect(Object obj){
         Class<?> clazz = obj.getClass();
@@ -37,9 +40,31 @@ class BackendApplicationTests {
 
     @Test
     void contextLoads() {
-        Patient p = dataService.getAllPatientData().get(0);
-        SqlProvider sqlProvider = new SqlProvider();
-        System.out.println(sqlProvider.updateItem(p));
+//        Patient p = dataService.getAllPatientData().get(0);
+//        SqlProvider sqlProvider = new SqlProvider();
+//        System.out.println(sqlProvider.updateItem(p));
+
+//        List<Staff> list= dataService.getAllStaffData();
+////        Map<String, List<Staff>> res = new HashMap<>();
+//        Map<String, List<Integer>> test = new HashMap<String, List<Integer>>(){{
+//            put("a", Lists.newArrayList(1, 2));
+//        }};
+//        List<Integer> a = test.get("a");
+//        a.add(3);
+//
+//
+//        System.out.println(test.get("a"));
+//        for (int i=0;i<list.size();i++){
+//            if(i == 0) {
+//                List<Staff> a = Lists.newArrayList(list.get(i));
+//                res.put(list.get(i).getOffice(), a);
+//                continue;
+//            }
+//            if(res.containsKey(list.get(i).getOffice())){
+//
+//            }
+//        }
+
     }
 
 }

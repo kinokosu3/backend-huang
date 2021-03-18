@@ -34,8 +34,6 @@ public class LoginController{
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("username", user.getUsername());
         map.put("password", user.getPassword());
-        System.out.println(key);
-        System.out.println(userService.getByNamePwd(map));
         if(userService.getByNamePwd(map) == null){
             return build(false, null);
         }else {
@@ -44,6 +42,5 @@ public class LoginController{
             return build(true, encrypt);
         }
     }
-
 }
 

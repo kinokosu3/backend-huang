@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -88,5 +89,10 @@ public class PatientController {
         // return message
         dataService.deletePatientItem(id);
         return message("删除成功", successCode);
+    }
+    @ServiceTokenRequired
+    @PostMapping("/patient/search")
+    public List<Patient> searchData(@RequestBody String val){
+        return dataService.searchMatchPatient(val);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -60,5 +61,10 @@ public class DrugController {
         // return message
         dataService.deleteDrugItem(id);
         return message("删除成功", successCode);
+    }
+    @ServiceTokenRequired
+    @PostMapping("/drug/search")
+    public List<Drug> searchDrug(@RequestBody String val){
+        return dataService.searchMatchDrug(val);
     }
 }

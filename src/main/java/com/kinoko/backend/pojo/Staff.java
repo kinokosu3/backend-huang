@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class User {
+public class Staff {
     private String id;
-    private String username;
-    private String password;
+    private String name;
+    private String responsibility;
+    private String office;
 }

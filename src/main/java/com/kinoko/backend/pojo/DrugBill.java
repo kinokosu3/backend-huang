@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class User {
+public class DrugBill {
     private String id;
-    private String username;
-    private String password;
+    private String drug_id;
+    private String bill_id;
+    private Integer quantity;
+    private float price_count;
 }

@@ -7,17 +7,25 @@ import java.util.Map;
 public class SqlProvider {
     Map<String, String> tables = new HashMap<String, String>(){{
         put("Patient", "patient_information");
-        put("Drug","drugTable");
+        put("Drug","drug_table");
+        put("Staff", "staff");
+        put("Bill", "bill_list");
+        put("DrugBill", "drug_bill");
 
     }};
     public String newItem(Object obj) {
         String baseSql = "insert into";
         Class<?> clazz = obj.getClass();
-        StringBuilder res = new StringBuilder(baseSql + " " + tables.get(clazz.getSimpleName()) + " " + "values(");
+        String className = tables.get(clazz.getSimpleName());
+        StringBuilder res = new StringBuilder(baseSql + " " + className + " " + "values(");
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             String[] arrays = field.toString().split("\\.");
-            res.append("#{").append(arrays[arrays.length-1]).append("},");
+            String filedName = arrays[arrays.length-1];
+            if("drug_list".equals(filedName)){
+                continue;
+            }
+            res.append("#{").append(filedName).append("},");
         }
         res.delete(res.length()-1, res.length());
         res.append(")");
