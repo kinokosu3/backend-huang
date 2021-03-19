@@ -3,6 +3,7 @@ package com.kinoko.backend;
 import com.kinoko.backend.Service.DataService;
 import com.kinoko.backend.Service.UserService;
 import com.kinoko.backend.mapper.SqlProvider;
+import com.kinoko.backend.pojo.BillView;
 import com.kinoko.backend.pojo.Patient;
 import com.kinoko.backend.pojo.Staff;
 import com.kinoko.backend.pojo.User;
@@ -64,6 +65,9 @@ class BackendApplicationTests {
 //
 //            }
 //        }
+//        List<BillView> buf = dataService.getBillViewList();
+//        buf.forEach(item->item.setDrugCount(dataService.getDrugBillCount(item.getId())));
+        System.out.println(dataService.getDrugBillList("b31350b5487"));
 
     }
 

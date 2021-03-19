@@ -77,4 +77,22 @@ public interface DataMapper {
 
     @InsertProvider(type = SqlProvider.class, method = "newItem")
     void newDrugBillItem(DrugBill drugBill);
+
+    @Select("select t.name, t.measure, b.quantity, b.price_count from drug_bill as b join drug_table as t on b.drug_id = t.id where b.bill_id=#{id}")
+    List<DrugBillListPreview> getDrugBillList(String id);
+
+    @Select("select count(*) from drug_bill where bill_id=#{id}")
+    Integer getDrugBillCount(String id);
+
+
+    @Select("select bl.id as id,pi.name as patientName, s.name as doctorName, count_price, check_text, time " +
+            "from bill_list as bl " +
+            "left join patient_information as pi on bl.name_id=pi.id " +
+            "left join staff as s on bl.doctor_id=s.id")
+    @Results(id="billView", value = {
+            @Result(property = "countPrice", column = "count_price"),
+            @Result(property = "checkText", column = "check_text"),
+
+    })
+    List<BillView> getBillViewList();
 }

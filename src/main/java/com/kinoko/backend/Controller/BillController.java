@@ -5,17 +5,17 @@ import com.kinoko.backend.Service.DataService;
 import com.kinoko.backend.aop.ServiceTokenRequired;
 import com.kinoko.backend.mapper.DataMapper;
 import com.kinoko.backend.pojo.Bill;
+import com.kinoko.backend.pojo.BillView;
 import com.kinoko.backend.pojo.DrugBill;
+import com.kinoko.backend.pojo.DrugBillListPreview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -36,7 +36,7 @@ public class BillController {
         return format.format(date);
     }
     @ServiceTokenRequired
-    @PostMapping("/bill")
+    @PostMapping("/bill/new")
     //Bill(id=, name_id=ae123c,
     // doctor_id=c1f8b1be97e,
     // drug_list={2=2, 3=2}, count_price=92.0,
@@ -62,4 +62,18 @@ public class BillController {
         });
     }
 
+    @ServiceTokenRequired
+    @GetMapping("/bill")
+    public List<BillView> main(){
+        List<BillView> buf = dataService.getBillViewList();
+        buf.forEach(item->item.setDrugCount(dataService.getDrugBillCount(item.getId())));
+        return buf;
+    }
+
+
+    @ServiceTokenRequired
+    @PostMapping("/bill/drugPreview")
+    public List<DrugBillListPreview> drugList(@RequestBody String id){
+        return dataService.getDrugBillList(id);
+    }
 }

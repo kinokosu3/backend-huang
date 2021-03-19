@@ -66,14 +66,16 @@ public class DataService {
     public void editOfficeStaffItem(Staff staff){
         dataMapper.editOfficeStaff(staff);
     }
-
     public List<Staff> searchMatchStaff(String val){
         return dataMapper.searchMatchStaff(val);
     }
 
-    public void addNewDrugBillItem(DrugBill drugBill){dataMapper.newDrugBillItem(drugBill);}
 
+    public void addNewDrugBillItem(DrugBill drugBill){dataMapper.newDrugBillItem(drugBill);}
     public void addNewBillItem(Bill bill){
         dataMapper.newBillItem(bill);
     }
+    public List<DrugBillListPreview> getDrugBillList(String id){return dataMapper.getDrugBillList(id);}
+    public Integer getDrugBillCount(String id){return dataMapper.getDrugBillCount(id);}
+    public List<BillView> getBillViewList(){return dataMapper.getBillViewList();}
 }
