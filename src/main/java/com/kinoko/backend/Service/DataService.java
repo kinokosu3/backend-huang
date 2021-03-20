@@ -33,6 +33,7 @@ public class DataService {
     public List<Patient> searchMatchPatient(String val){
         return dataMapper.searchMatchPatient(val);
     }
+    public Patient getOnePatientItem(String id){return dataMapper.getOnePatient(id);}
 
     public List<Drug> getAllDrugData(){
         return dataMapper.getDrugAllData();
@@ -57,6 +58,7 @@ public class DataService {
     public List<Office> getAllOfficeData(){
         return dataMapper.getOfficeAllData();
     }
+    public Staff getOneStaffItem(String id){return dataMapper.getOneStaff(id);}
     public void addNewOfficeStaffItem(Staff staff){
         dataMapper.newOfficeStaff(staff);
     }
@@ -78,4 +80,5 @@ public class DataService {
     public List<DrugBillListPreview> getDrugBillList(String id){return dataMapper.getDrugBillList(id);}
     public Integer getDrugBillCount(String id){return dataMapper.getDrugBillCount(id);}
     public List<BillView> getBillViewList(){return dataMapper.getBillViewList();}
+    public void deleteBillItem(String id, String tableName){dataMapper.deleteBillItem(id,tableName);}
 }

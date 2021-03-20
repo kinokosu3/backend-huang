@@ -72,7 +72,9 @@ public class OfficeController {
     @PostMapping("/officeManage/new")
     public Map<String, Object> addData(@RequestBody Staff staff){
         staff.setId(DigestUtils.md5DigestAsHex(Long.toString(System.currentTimeMillis()).getBytes()).substring(1,12));
+        System.out.println(staff);
         dataService.addNewOfficeStaffItem(staff);
+
         return message("添加成功",successCode);
     }
 

@@ -15,6 +15,8 @@ import java.util.Map;
 public class BillView {
     private String id;
     private String patientName;
+    private String patientId;
+    private String doctorId;
     private String doctorName;
     private Integer drugCount;
     private float countPrice;

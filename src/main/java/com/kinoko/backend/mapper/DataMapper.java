@@ -14,10 +14,17 @@ public interface DataMapper {
 
     @Select("select count(*) from patient_information")
     int countPatient();
+    @Select("select count(*) from bill_list")
+    int countBillItem();
+    @Select("select sum(count_price) from bill_list")
+    int countBillPrice();
 
 
     @Select("select * from patient_information")
     List<Patient> getPatientAllData();
+
+    @Select("select * from patient_information where id=#{id}")
+    Patient getOnePatient(String id);
 
     @InsertProvider(type = SqlProvider.class, method = "newItem")
     void newPatientItem(Patient patient);
@@ -58,6 +65,9 @@ public interface DataMapper {
     @Select("select * from office")
     List<Office> getOfficeAllData();
 
+    @Select("select * from staff where id=#{id}")
+    Staff getOneStaff(String id);
+
     @InsertProvider(type = SqlProvider.class, method = "newItem")
     void newOfficeStaff(Staff staff);
 
@@ -85,7 +95,7 @@ public interface DataMapper {
     Integer getDrugBillCount(String id);
 
 
-    @Select("select bl.id as id,pi.name as patientName, s.name as doctorName, count_price, check_text, time " +
+    @Select("select bl.name_id as patientId, bl.doctor_id as doctorId,bl.id as id,pi.name as patientName, s.name as doctorName, count_price, check_text, time " +
             "from bill_list as bl " +
             "left join patient_information as pi on bl.name_id=pi.id " +
             "left join staff as s on bl.doctor_id=s.id")
@@ -95,4 +105,7 @@ public interface DataMapper {
 
     })
     List<BillView> getBillViewList();
+
+    @DeleteProvider(type = SqlProvider.class, method = "deleteItem")
+    void deleteBillItem(String id, String tableName);
 }
