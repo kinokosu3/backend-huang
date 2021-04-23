@@ -5,6 +5,7 @@ import com.kinoko.backend.Service.UserService;
 import com.kinoko.backend.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -22,15 +23,28 @@ public class LoginController{
     private String key;
     @Autowired
     UserService userService;
+    //{"LoginSuccess":false, "userToken":asidhaisudhiahuifshiusd}
+    // false,
+    //key string
+    //KEY VALUE
+    // Object
+
+
     private Map<String, Object> build(boolean loginStatus, String encrypt){
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("LoginSuccess",loginStatus);
         map.put("userToken", encrypt);
         return map;
     }
+
+
+
     @PostMapping("/login")
     @ResponseBody
     public Map<String, Object> main(@RequestBody User user) throws Exception {
+        System.out.println(user);
+
+        // 好转化string
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("username", user.getUsername());
         map.put("password", user.getPassword());

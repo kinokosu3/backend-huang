@@ -3,11 +3,11 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+**/.DS_Store
 .mvn/*
 mvnw
 mvnw.cmd
-
+out/
 ### STS ###
 .apt_generated
 .classpath

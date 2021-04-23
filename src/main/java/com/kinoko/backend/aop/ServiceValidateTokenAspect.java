@@ -48,10 +48,9 @@ public class ServiceValidateTokenAspect{
         assert requestAttributes != null;
         HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
         String token = request.getHeader("token");
-//        System.out.println(token);
 
         String decrypt = decrypt(token, key);
-//        System.out.println(decrypt);
+
         Map<String, Object> user  = JSONObject.parseObject(decrypt);
         Map<String, Object> res = new HashMap<String, Object>();
 
@@ -64,7 +63,6 @@ public class ServiceValidateTokenAspect{
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Content-Type", "application/json");
             response.setContentType("application/json;charset=UTF-8");
-            System.out.println("fuck");
             res.put("msg", "TOKEN不存在");
             res.put("code", "108");
             writer=response.getWriter();

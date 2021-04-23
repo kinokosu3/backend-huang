@@ -2,6 +2,7 @@ package com.kinoko.backend;
 
 import com.kinoko.backend.Service.DataService;
 import com.kinoko.backend.Service.UserService;
+import com.kinoko.backend.mapper.DataMapper;
 import com.kinoko.backend.mapper.SqlProvider;
 import com.kinoko.backend.pojo.BillView;
 import com.kinoko.backend.pojo.Patient;
@@ -27,15 +28,23 @@ class BackendApplicationTests {
     DataService dataService;
     @Autowired
     UserService userService;
+    @Autowired
+    DataMapper dataMapper;
 
     public void testReflect(Object obj){
         Class<?> clazz = obj.getClass();
         Field[] fields = clazz.getDeclaredFields();
         Method[] methods = clazz.getMethods();
         String buf = fields[0].toString();
-        String[] arrays = buf.split("\\.");
-        System.out.println(arrays[arrays.length-1]);
-        System.out.println(clazz.getSimpleName());
+//        String[] arrays = buf.split("\\.");
+        for (Field field : fields) {
+            System.out.println(field);
+            String[] arrays = field.toString().split("\\.");
+            System.out.println(Arrays.toString(arrays));
+        }
+
+//        System.out.println(arrays[arrays.length-1]);
+//        System.out.println(clazz.getSimpleName());
     }
 
 
@@ -67,8 +76,13 @@ class BackendApplicationTests {
 //        }
 //        List<BillView> buf = dataService.getBillViewList();
 //        buf.forEach(item->item.setDrugCount(dataService.getDrugBillCount(item.getId())));
-        System.out.println(dataService.getDrugBillList("b31350b5487"));
-
+//        System.out.println(dataService.getDrugBillList("b31350b5487"));
+//        User user = new User();
+//        user.setPassword("1");
+//        user.setUsername("1");
+//        user.setId("123");
+//        testReflect(user);
+        System.out.println(dataMapper.countBillPrice());
     }
 
 }

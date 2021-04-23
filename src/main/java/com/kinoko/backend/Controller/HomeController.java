@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 public class HomeController {
@@ -23,7 +24,9 @@ public class HomeController {
     @GetMapping("/home/count")
     public Map<String, Integer> siteStats(){
         Map<String, Integer> res = new HashMap<>();
-        res.put("count_price", dataMapper.countBillPrice());
+
+        res.put("count_price", Objects.requireNonNullElse(dataMapper.countBillPrice(), 0));
+
         res.put("count_itemNum", dataMapper.countBillItem());
         return res;
     }

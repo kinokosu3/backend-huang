@@ -55,8 +55,17 @@ public class DataService {
     public List<Staff> getAllStaffData(){
         return dataMapper.getStaffAllData();
     }
-    public List<Office> getAllOfficeData(){
+    public Office getOfficeOneData(String name){
+        return dataMapper.getOfficeOneData(name);
+    }
+    public List<Office> getOfficeAllData(){
         return dataMapper.getOfficeAllData();
+    }
+    public void deleteOfficeData(String name){
+        dataMapper.deleteOffice(name, "Office");
+    }
+    public void newOfficeData(Office office){
+        dataMapper.newOffice(office);
     }
     public Staff getOneStaffItem(String id){return dataMapper.getOneStaff(id);}
     public void addNewOfficeStaffItem(Staff staff){

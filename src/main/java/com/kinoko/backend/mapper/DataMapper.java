@@ -13,11 +13,11 @@ import java.util.List;
 public interface DataMapper {
 
     @Select("select count(*) from patient_information")
-    int countPatient();
+    Integer countPatient();
     @Select("select count(*) from bill_list")
-    int countBillItem();
+    Integer countBillItem();
     @Select("select sum(count_price) from bill_list")
-    int countBillPrice();
+    Integer countBillPrice();
 
 
     @Select("select * from patient_information")
@@ -37,6 +37,7 @@ public interface DataMapper {
     @Select("select * from patient_information where name like concat('%',#{val},'%')")
     List<Patient> searchMatchPatient(String val);
 
+    // LIST:{}
 
     @Select("select * from drug_table")
     List<Drug> getDrugAllData();
@@ -62,8 +63,16 @@ public interface DataMapper {
     @Select("select * from staff")
     List<Staff> getStaffAllData();
 
+    @Select("select * from office where name=#{name}")
+    Office getOfficeOneData(String name);
+
     @Select("select * from office")
     List<Office> getOfficeAllData();
+    @DeleteProvider(type = SqlProvider.class, method = "deleteItem")
+    void deleteOffice(String id, String tableName);
+
+    @InsertProvider(type = SqlProvider.class, method = "newItem")
+    void newOffice(Office office);
 
     @Select("select * from staff where id=#{id}")
     Staff getOneStaff(String id);

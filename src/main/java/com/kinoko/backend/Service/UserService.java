@@ -26,7 +26,7 @@ public class UserService {
         System.out.println(user);
         userMapper.insertNewUser(user);
     }
-    public List<User> searchMatchUser(String val){
-        return userMapper.searchMatchUser(val);
-    }
+//    public List<User> searchMatchUser(String val){
+//        return userMapper.searchMatchUser(val);
+//    }
 }

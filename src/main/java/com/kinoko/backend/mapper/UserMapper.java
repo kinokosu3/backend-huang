@@ -22,6 +22,7 @@ public interface UserMapper {
 
     @Insert("insert into admin_user values(#{id},#{username},#{password})")
     void insertNewUser(User user);
-    @Select("select * from admin_user where username like concat('%',#{val},'%')")
-    List<User> searchMatchUser(String val);
+
+//    @Select("select * from admin_user where username like concat('%',#{val},'%')")
+//    List<User> searchMatchUser(String val);
 }

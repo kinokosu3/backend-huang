@@ -65,19 +65,19 @@ public class AesEncryptUtils {
     }
 
 
-//    public static void main(String[] args) throws Exception {
-//        Map map = new HashMap<String, String>();
-//        map.put("key", "value");
-//        map.put("中文", "汉字");
-//        String content = JSONObject.toJSONString(map);
-//        System.out.println("加密前：" + content);
+////    public static void main(String[] args) throws Exception {
+////        Map map = new HashMap<String, String>();
+////        map.put("key", "value");
+////        map.put("中文", "汉字");
+////        String content = JSONObject.toJSONString(map);
+////        System.out.println("加密前：" + content);
+////
+////        String encrypt = encrypt(content, KEY);
+////        System.out.println("加密后：" + encrypt);
+////
+////        String decrypt = decrypt(encrypt, KEY);
+////        System.out.println("解密后：" + decrypt);
 //
-//        String encrypt = encrypt(content, KEY);
-//        System.out.println("加密后：" + encrypt);
-//
-//        String decrypt = decrypt(encrypt, KEY);
-//        System.out.println("解密后：" + decrypt);
-
-//    }
+////    }
 }
 

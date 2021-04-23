@@ -69,6 +69,7 @@ public class PatientController {
         }
         return message;
     }
+    // update
     @ServiceTokenRequired
     @PostMapping("/patient/edit")
     public Map<String, Object> editData(@RequestBody Patient patient){

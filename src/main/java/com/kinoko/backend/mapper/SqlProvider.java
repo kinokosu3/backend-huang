@@ -11,17 +11,25 @@ public class SqlProvider {
         put("Staff", "staff");
         put("Bill", "bill_list");
         put("DrugBill", "drug_bill");
-
+        put("Office", "office");
     }};
     public String newItem(Object obj) {
         String baseSql = "insert into";
         Class<?> clazz = obj.getClass();
+        // getSimpleName() 获得类名
+        // Patient
+
+        // "Patient" <- clazz.getSimpleName()
+        //  表明 patient_information
         String className = tables.get(clazz.getSimpleName());
+        // insert into patient_information values(id=#{id}, asdiajsd=#{asdiajsd},)
         StringBuilder res = new StringBuilder(baseSql + " " + className + " " + "values(");
+        // [] STRING
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             String[] arrays = field.toString().split("\\.");
             String filedName = arrays[arrays.length-1];
+            // drug_list
             if("drug_list".equals(filedName)){
                 continue;
             }
@@ -32,8 +40,10 @@ public class SqlProvider {
         return res.toString();
     }
     public String deleteItem(String id, String tableName){
+        // id=1, tableName=Patient
         String baseSql = "delete from";
-        return baseSql + " " + tables.get(tableName) + " " + "where id=#{id}";
+        // "delete from patient_information where id=#{id}
+        return baseSql + " " + tables.get(tableName) + " " + ("Office".equals(tableName)?"where name=#{id}":"where id=#{id}");
     }
     public String updateItem(Object obj){
         String baseSql = "update";
